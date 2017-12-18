@@ -4,12 +4,12 @@ pipeline{
     stages{
         stage('Compile stage'){
             steps{
-             bat(/"C:/maven/mvn" -Dmaven.test.failure.ignore clean package/)
+             bat "mvn clean compile"
             }
         }
         stage('Testing stage'){
             steps{
-                bat(/"C:/maven/mvn" -Dmaven.test.failure.ignore test/)
+                bat "mvn test"
             }
         }
     }
