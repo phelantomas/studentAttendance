@@ -4,16 +4,12 @@ pipeline{
     stages{
         stage('Compile stage'){
             steps{
-                withMaven(maven : 'Maven 3.5.2'){
-                    bat 'mvn package'
-                }
+             bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
             }
         }
         stage('Testing stage'){
             steps{
-                withMaven(maven : 'Maven 3.5.2'){
-                    bat 'mvn test'
-                }
+                bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore test/)
             }
         }
     }
