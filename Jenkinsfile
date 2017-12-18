@@ -3,13 +3,18 @@ pipeline{
 
     stages{
         stage('Compile stage'){
+
             steps{
-             bat "mvn clean compile"
+                withMaven(maven : 'Maven_3_5_2') {
+                    Sh 'mvn clean compile'
+                }
             }
         }
         stage('Testing stage'){
             steps{
-                bat "mvn test"
+                withMaven(maven : 'Maven_3_5_2') {
+                    Sh 'mvn test'
+                }
             }
         }
     }
