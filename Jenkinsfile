@@ -4,12 +4,16 @@ pipeline{
     stages{
         stage('Compile stage'){
             steps{
-                bat 'mvn package'
+                withMaven(maven : 'Maven 3.5.2'){
+                    bat 'mvn package'
+                }
             }
         }
         stage('Testing stage'){
             steps{
-                bat 'mvn test'
+                withMaven(maven : 'Maven 3.5.2'){
+                    bat 'mvn test'
+                }
             }
         }
     }
